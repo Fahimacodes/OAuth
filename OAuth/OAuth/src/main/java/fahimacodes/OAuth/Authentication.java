@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 import org.json.JSONObject;
 
 /**
- * POST requests retrieve access token and refresh access token Used for Zoom
- * OAuth 2.0 application
+ * POST requests sent to retrieve access token & refresh access token
+ * Originally uses for Zoom OAuth 2.0 application
  */
 public class Authentication {
 	private OAuth oAuth = new OAuth();
@@ -96,6 +96,10 @@ public class Authentication {
 		return oAuth;
 	}
 
+	/**
+	* Container class for OAuth 2.0 to hold authentication & authorization token 
+	 * of users to make subsequent Zoom API requests
+	 */
 	public class OAuth {
 
 		private String accessToken;
