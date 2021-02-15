@@ -15,8 +15,9 @@ import java.util.stream.Collectors;
 import org.json.JSONObject;
 
 /**
- * POST requests sent to retrieve access token & refresh access token
- * Originally uses for Zoom OAuth 2.0 application
+ * POST requests sent to retrieve access token & refresh token,
+ * and refresh access token upon expiry
+ * Originally used for Zoom OAuth 2.0 application
  */
 public class Authentication {
 	private OAuth oAuth = new OAuth();
@@ -49,7 +50,7 @@ public class Authentication {
 
 		String encoding = Base64.getEncoder().encodeToString(keys.getBytes());
 		HttpClient client = HttpClient.newHttpClient();
-
+		// Update URI according to specified endpoint 
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://zoom.us/oauth/token"))
 				.headers("Content-Type", "application/x-www-form-urlencoded", "Authorization", "Basic " + encoding)
 				.POST(BodyPublishers.ofString(form)).build();
@@ -79,7 +80,7 @@ public class Authentication {
 
 		String encoding = Base64.getEncoder().encodeToString(keys.getBytes());
 		HttpClient client = HttpClient.newHttpClient();
-
+		// Update URI according to specified endpoint 
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://zoom.us/oauth/token"))
 				.headers("Content-Type", "application/x-www-form-urlencoded", "Authorization", "Basic " + encoding)
 				.POST(BodyPublishers.ofString(form)).build();
